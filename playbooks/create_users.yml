@@ -1,0 +1,18 @@
+- hosts: "all"
+  vars_files:
+    - ~/Ansible/vars/main.yml
+  become: "yes"
+  tasks:
+
+  - name: Add user 'idean'
+    ansible.builtin.user:
+      name: idean
+      shell: /bin/bash
+      groups: sudo
+      append: yes
+
+  - name: Add 'idean' ssh key
+    ansible.posix.authorized_key:
+      user: idean
+      state: present
+      key: https://github.com/Clevlandpink.keys

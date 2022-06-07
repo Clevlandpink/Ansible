@@ -1,0 +1,35 @@
+- hosts: "all"
+  vars_files:
+    - ~/Ansible/vars/main.yml
+  become: "yes"
+  tasks:
+    - debug:
+        msg: Starting system setup.
+
+- name: Update 
+  import_playbook: update.yml
+
+- name: Install packages.
+  import_playbook: install_packages.yml
+
+- name: Install Docker.
+  import_playbook: install_docker.yml
+
+- name: Add user idean
+  import_playbook: create_users.yml
+
+- name: Fail2Ban
+  import_playbook: fail2ban.yml
+  when: fail2ban_enabled | bool
+
+- name: Enable firewall.
+  import_playbook: firewall.yml
+
+- name: SSH 
+  import_playbook: harden_ssh.yml
+
+- name: Autoupdate
+  import_playbook: autoupdate.yml
+  when:
+    - ansible_os_family == 'Debian'
+    - autoupdate_enabled | bool
