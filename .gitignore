@@ -1,0 +1,4 @@
+vars/main.yml
+inventory/hosts
+ansible.cfg
+.gitignore
