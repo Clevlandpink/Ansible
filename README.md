@@ -2,13 +2,13 @@
 Just some Ansible playbooks to automate some of the tasks I commonly do when settinh up new servers.
 
 ## AutoUpdate
-Enables aunattented security upgrades.
+Enables unattented security upgrades.
 
 ## Create Users
 Creates a new non-root user and imports their SSH key.
 
 ## Fail2ban
-Install and setup Fail2ban to prevent bruteforce attacks.
+Install and setup Fail2ban to help mitigate bruteforce attacks.
 
 ## Firewall
 Enable UFW and allow SSH connections.
